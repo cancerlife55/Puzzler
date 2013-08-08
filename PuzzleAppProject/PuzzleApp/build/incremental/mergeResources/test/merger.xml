@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Stanley\AndroidStudioProjects\PuzzleAppProject\PuzzleApp\src\instrumentTest\res" />
+        <source path="C:\Users\Stanley\AndroidStudioProjects\PuzzleAppProject\PuzzleApp\build\res\rs\test" />
+    </dataSet>
+
+</merger>
