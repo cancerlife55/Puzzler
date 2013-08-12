@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 
 public class RubikCubePuzzle extends Puzzle {
 
-	public RubikCubePuzzle(){
+	public RubikCubePuzzle(Bitmap image){
 		
 	}
 

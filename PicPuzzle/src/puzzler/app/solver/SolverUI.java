@@ -17,5 +17,6 @@ public class SolverUI extends Activity implements OnClickListener{
 	public void onClick(DialogInterface dialog, int which) {
 		// TODO Auto-generated method stub
 		
+		
 	}
 }

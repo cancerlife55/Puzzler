@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 public class PuzzleGeneratorUI extends Activity implements OnClickListener{
@@ -13,6 +14,12 @@ public class PuzzleGeneratorUI extends Activity implements OnClickListener{
 	private Bundle extras;
 	private Image imageObj;
 
+	private Bitmap image;
+	
+	private JigSawPuzzle jsp;
+	
+	private RubikCubePuzzle rcp;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		/*
@@ -27,26 +34,47 @@ public class PuzzleGeneratorUI extends Activity implements OnClickListener{
 		if(extras.containsKey("image")){
 			imageObj = (Image)extras.get("image");
 		}
+		
+		setImage();
 	}
 
 	@Override
 	public void onClick(DialogInterface arg0, int arg1) {
 		// TODO Auto-generated method stub
-		
 		/*
-		 * if selected solve puzzle call Intent generating puzzle solzer (solverUI)
+		 * With the select of puzzle type, change the UI with the image solved
+		 * puzzle
 		 */
 		
-		//if selected Puzzle Generate
-		Intent i = new Intent(this, SolverUI.class);
-		i.putExtra("image", imageObj);
-		startActivity(i); //start activty		
-		finish(); // kill this activity 
+		/*
+		 * if selected jig saw
+		 */
+		jsp = new JigSawPuzzle(image);
 		
 		/*
 		 * Other else ifs'
 		 */
+		rcp = new RubikCubePuzzle(image);
+		
+		/*
+		 * else if on select solverUI
+		 *if selected Puzzle Generate
+		 */
+		
+		Intent i = new Intent(this, SolverUI.class);
+			/*
+			 * nested if to choose set put Extra if jigsaw or rubik cube
+			 */
+		
+		//i.putExtra("image", imageObj);
+		
+		startActivity(i); //start activty		
+		finish(); // kill this activity 
 		
 	}
 	
+	private void setImage() {
+		// TODO Auto-generated method stub
+		image = imageObj.getImage();
+	}
 }
