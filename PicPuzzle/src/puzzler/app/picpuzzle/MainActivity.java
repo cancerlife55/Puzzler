@@ -19,4 +19,12 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	/*
+	 * Order of execution should be;
+	 * 1. a blunt UI showing game description and a short narrative with cool UI
+	 * 2. On clicking start, display the CaptureImageUI
+	 * 3. Then go to EditImageUI
+	 * 4. Generate puzzle
+	 * 5. Solver UI
+	 */
 }
