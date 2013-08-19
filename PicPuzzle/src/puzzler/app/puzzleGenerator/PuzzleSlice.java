@@ -1,6 +1,7 @@
 package puzzler.app.puzzleGenerator;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -19,15 +20,28 @@ public class PuzzleSlice {
 	
 	private ArrayList<Point> moves = new ArrayList<Point>();
 	
+	private AtomicInteger threadSafeNum = new AtomicInteger();
+			
+	private int slice_num = 1;
+	
 	public PuzzleSlice(int x_loc, int y_loc, int width, int height, Bitmap image ){
 		this.WIDTH  = width;
 		this.HEIGHT = height;
 		this.x_loc  = x_loc;
 		this.y_loc  = y_loc;
 		
+		this.slice_num = threadSafeNum.incrementAndGet();
+		
 		this.setSlice_image(image);
 	}
 
+	public void move(int x, int y){
+		x_loc = x;
+		y_loc = y;
+				
+		addMove(x,y);
+	}
+		
 	public void addMove(int x, int y){
 		moves.add(new Point(x,y));
 	}
@@ -71,5 +85,8 @@ public class PuzzleSlice {
 	public void setSlice_image(Bitmap slice_image) {
 		this.slice_image = slice_image;
 	}
-	
+
+	public int getSlice_num() {
+		return slice_num;
+	}
 }

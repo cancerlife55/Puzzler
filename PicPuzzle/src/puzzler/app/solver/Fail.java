@@ -7,6 +7,7 @@ public class Fail extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		
 	}
 }

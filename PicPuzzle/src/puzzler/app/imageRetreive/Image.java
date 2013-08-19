@@ -17,6 +17,10 @@ public class Image implements Serializable{
 		
 	}
 	
+	public Image(Bitmap image){
+		setImage(image);
+	}
+	
 	public void setImage(Bitmap image){
 		img = image;
 	}

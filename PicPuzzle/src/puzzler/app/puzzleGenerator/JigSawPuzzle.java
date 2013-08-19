@@ -1,6 +1,7 @@
 package puzzler.app.puzzleGenerator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.graphics.Bitmap;
 
@@ -55,8 +56,8 @@ public class JigSawPuzzle extends Puzzle{
 	}
 
 
-	public void overRideSettings(){
-		
+	public void overRideSettings(HashMap<String, Object> settings){
+
 	}
 
 	@Override

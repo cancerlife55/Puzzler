@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 public class ShootImage extends Image{
 
-	/**
+	/*
 	 * 
 	 */
 	private static final long serialVersionUID = 1102938475610L;
 
 	public ShootImage(){
+	
 		
 	}
 	
