@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import android.graphics.Bitmap;
 
-public class RubikCubePuzzle extends Puzzle {
+public class RubikCubePuzzle implements Puzzle {
 
 	public RubikCubePuzzle(Bitmap image){
 		
 	}
 
 	@Override
-	public void createPuzzle(Bitmap img, PuzzleSetting settings) {
+	public void generatePuzzle() {
 
 		
 	}
@@ -31,6 +31,12 @@ public class RubikCubePuzzle extends Puzzle {
 	@Override
 	public Bitmap getOriginalImage() {
 
+		return null;
+	}
+
+	@Override
+	public Bitmap drawPuzzle() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

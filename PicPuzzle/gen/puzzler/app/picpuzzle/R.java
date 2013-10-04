@@ -27,23 +27,28 @@ public final class R {
         public static final int round_corners=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000a;
-        public static final int addDecorations=0x7f080005;
-        public static final int button1=0x7f080002;
-        public static final int button_bottom_sect=0x7f080007;
-        public static final int button_top_sect=0x7f080003;
+        public static final int action_settings=0x7f08000e;
+        public static final int addDecorations=0x7f080004;
+        public static final int button_bottom_sect=0x7f080006;
+        public static final int button_bottom_sect1=0x7f08000d;
+        public static final int button_top_sect=0x7f080002;
+        public static final int button_top_sect1=0x7f080009;
         public static final int capture=0x7f080001;
         public static final int gallery=0x7f080000;
-        public static final int imageViewEdit=0x7f080006;
-        public static final int imageviewPreview=0x7f080008;
-        public static final int layoutBottomButtons=0x7f080009;
-        public static final int puzzleType=0x7f080004;
+        public static final int imageViewEdit=0x7f080005;
+        public static final int imageViewGeneratePuzzle=0x7f08000c;
+        public static final int imageviewPreview=0x7f080007;
+        public static final int jigSawPuzzle=0x7f08000a;
+        public static final int layoutBottomButtons=0x7f080008;
+        public static final int puzzleType=0x7f080003;
+        public static final int rubikCubePuzzle=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int capture_image=0x7f030001;
         public static final int edit_image=0x7f030002;
         public static final int preview_image=0x7f030003;
+        public static final int puzzle_generate=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -56,7 +61,9 @@ public final class R {
         public static final int editImage=0x7f050004;
         public static final int hello_world=0x7f050002;
         public static final int imagePreviewDesc=0x7f050005;
+        public static final int jigSawPuzzle=0x7f050009;
         public static final int puzzleTypeText=0x7f050006;
+        public static final int rubikCubePuzzle=0x7f050008;
     }
     public static final class style {
         /** 

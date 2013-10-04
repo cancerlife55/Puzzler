@@ -20,17 +20,15 @@ public class PuzzleSlice {
 	
 	private ArrayList<Point> moves = new ArrayList<Point>();
 	
-	private AtomicInteger threadSafeNum = new AtomicInteger();
-			
 	private int slice_num = 1;
 	
-	public PuzzleSlice(int x_loc, int y_loc, int width, int height, Bitmap image ){
+	public PuzzleSlice(int x_loc, int y_loc, int width, int height, int row, int col, Bitmap image, int counter ){
 		this.WIDTH  = width;
 		this.HEIGHT = height;
 		this.x_loc  = x_loc;
 		this.y_loc  = y_loc;
 		
-		this.slice_num = threadSafeNum.incrementAndGet();
+		slice_num = counter;		
 		
 		this.setSlice_image(image);
 	}

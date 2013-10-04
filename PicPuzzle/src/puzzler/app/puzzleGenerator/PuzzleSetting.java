@@ -27,12 +27,14 @@ public class PuzzleSetting {
 	}
 
 	private void _default(){
-		width    = 40;
-		height   = 40;
-		xpuzzles = 40;
-		ypuzzles = 40;
+		width    = 20;
+		height   = 20;
+		xpuzzles = 2;
+		ypuzzles = 2;
+		
 		image_panel_height = 0;
 		image_panel_width  = 0;
+		
 		allowJump = false;
 	}
 

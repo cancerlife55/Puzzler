@@ -10,4 +10,6 @@
     
     <string name="puzzleTypeText">Puzzle type</string>
     <string name="addDecorationsText">Add decorations</string>
+    <string name="rubikCubePuzzle">Rubik cube</string>
+    <string name="jigSawPuzzle">Jig Saw</string>
 </resources>

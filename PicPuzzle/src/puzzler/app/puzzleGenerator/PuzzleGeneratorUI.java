@@ -1,17 +1,25 @@
 package puzzler.app.puzzleGenerator;
 
+import java.util.ArrayList;
+
 import puzzler.app.imageRetreive.Image;
-import puzzler.app.solver.SolverUI;
+import puzzler.app.imageRetreive.RetrieveImage;
+import puzzler.app.picpuzzle.R;
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
-public class PuzzleGeneratorUI extends Activity implements OnClickListener{
+public class PuzzleGeneratorUI extends Activity {
+
+	private static final String TAG = "PUZZLEGENERATE";
 
 	private Bundle extras;
+	
 	private Image imageObj;
 
 	private Bitmap image;
@@ -20,14 +28,32 @@ public class PuzzleGeneratorUI extends Activity implements OnClickListener{
 	
 	private RubikCubePuzzle rcp;
 	
+	private ImageView imageView;
+	
+	private Display mDisplay;
+
+	private Button jigsaw;
+
+	private Button rubikCube;
+	
+	private Puzzle puzzlejig;
+	
+	private Puzzle puzzlerubik;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		/*
 		 * Create UI to create the puzzle
 		 * Image display in the middle with activity buttons on the action bar
 		 * On selecting puzzle type, image is parsed to generate puzzle
 		 */
-
+		setContentView(R.layout.puzzle_generate);		
+		
+		mDisplay= getWindowManager().getDefaultDisplay();
+		
+		imageView = (ImageView) findViewById(R.id.imageViewGeneratePuzzle);
+		
 		extras = getIntent().getExtras();
 		
 		//get imageObj
@@ -35,46 +61,55 @@ public class PuzzleGeneratorUI extends Activity implements OnClickListener{
 			imageObj = (Image)extras.get("image");
 		}
 		
-		setImage();
+		displayImage();
+		
+		puzzlejig = new JigSawPuzzle(image);
+		puzzlerubik = new RubikCubePuzzle(image);
+		
+		
+		jigsaw = (Button)findViewById(R.id.jigSawPuzzle);
+		jigsaw.setOnClickListener(new View.OnClickListener() {
+            private Bitmap img;
+            
+			public void onClick(View v) {
+                // Perform action on click
+            	/*
+        		 * if selected jig saw
+        		 */
+				puzzlejig.generatePuzzle();				
+				
+        		img = puzzlejig.drawPuzzle();
+        		
+        		imageView.setImageBitmap(img);
+            }
+        });
+		
+		rubikCube = (Button)findViewById(R.id.rubikCubePuzzle);
+		rubikCube.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	/*
+        		 * Other else ifs'
+        		 */
+
+        		
+            }
+        });
 	}
 
-	@Override
-	public void onClick(DialogInterface arg0, int arg1) {
-		// TODO Auto-generated method stub
-		/*
-		 * With the select of puzzle type, change the UI with the image solved
-		 * puzzle
-		 */
-		
-		/*
-		 * if selected jig saw
-		 */
-		jsp = new JigSawPuzzle(image);
-		
-		/*
-		 * Other else ifs'
-		 */
-		rcp = new RubikCubePuzzle(image);
-		
-		/*
-		 * else if on select solverUI
-		 *if selected Puzzle Generate
-		 */
-		
-		Intent i = new Intent(this, SolverUI.class);
-			/*
-			 * nested if to choose set put Extra if jigsaw or rubik cube
-			 */
-		
-		//i.putExtra("image", imageObj);
-		
-		startActivity(i); //start activty		
-		finish(); // kill this activity 
-		
+	public void setImageGeneratePuzle(){		
+		image = new RetrieveImage(imageObj.getPath()).getImage();
 	}
-	
-	private void setImage() {
-		// TODO Auto-generated method stub
-		image = imageObj.getImage();
+		
+	private void displayImage(){
+		setImageGeneratePuzle();
+		
+		imageView.getLayoutParams().height = mDisplay.getHeight() - 40;
+		imageView.getLayoutParams().width  = mDisplay.getWidth() - 40;
+		
+		if(image != null){
+			imageView.setImageBitmap(image);
+		}else
+			Log.d(TAG,"Error image");
 	}
 }

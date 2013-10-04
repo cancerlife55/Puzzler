@@ -5,12 +5,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Point;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 import puzzler.app.puzzleGenerator.PuzzleSetting;
 import puzzler.app.puzzleGenerator.PuzzleSlice;
 
-public class Game {
+public class Game  extends SurfaceView implements  SurfaceHolder.Callback  {
 	private List<PuzzleSlice> puzzleSlices;
 	
 	private PuzzleSetting settings;
@@ -29,12 +32,17 @@ public class Game {
 	
 	private boolean allowed_jump;
 	
-	public Game(ArrayList<PuzzleSlice> slices, PuzzleSetting settings){
+	public Game(Context context) {
+		super(context);
+
+	}
+	
+	/*public Game(ArrayList<PuzzleSlice> slices, PuzzleSetting settings){
 		this.puzzleSlices = slices;
 		this.settings = settings;
 		
 		initSettings();
-	}
+	}*/
 	
 	public void initSettings(){
 		slice_width  = settings.getSliceWidth();
@@ -155,5 +163,23 @@ public class Game {
 			}});
 		
 		return solution;
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
