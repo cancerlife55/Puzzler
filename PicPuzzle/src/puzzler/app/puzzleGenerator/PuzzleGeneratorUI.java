@@ -13,6 +13,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class PuzzleGeneratorUI extends Activity {
 
@@ -27,9 +28,7 @@ public class PuzzleGeneratorUI extends Activity {
 	private JigSawPuzzle jsp;
 	
 	private RubikCubePuzzle rcp;
-	
-	private ImageView imageView;
-	
+		
 	private Display mDisplay;
 
 	private Button jigsaw;
@@ -40,6 +39,11 @@ public class PuzzleGeneratorUI extends Activity {
 	
 	private Puzzle puzzlerubik;
 
+	private LinearLayout layout;
+
+	private DrawPuzzleToView puzzle;
+
+	private PuzzleGeneratorUI myPGUI;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,37 +54,36 @@ public class PuzzleGeneratorUI extends Activity {
 		 */
 		setContentView(R.layout.puzzle_generate);		
 		
+		myPGUI = this;
+		
 		mDisplay= getWindowManager().getDefaultDisplay();
 		
-		imageView = (ImageView) findViewById(R.id.imageViewGeneratePuzzle);
+		layout = (LinearLayout) findViewById(R.id.picholder);
 		
 		extras = getIntent().getExtras();
 		
 		//get imageObj
 		if(extras.containsKey("image")){
-			imageObj = (Image)extras.get("image");
+			imageObj = (Image)extras.get("image");	
 		}
 		
-		displayImage();
+		setImageGeneratePuzle();
 		
 		puzzlejig = new JigSawPuzzle(image);
 		puzzlerubik = new RubikCubePuzzle(image);
-		
-		
+				
 		jigsaw = (Button)findViewById(R.id.jigSawPuzzle);
 		jigsaw.setOnClickListener(new View.OnClickListener() {
-            private Bitmap img;
-            
 			public void onClick(View v) {
                 // Perform action on click
-            	/*
-        		 * if selected jig saw
-        		 */
-				puzzlejig.generatePuzzle();				
+				puzzle = new DrawPuzzleToView(myPGUI,image, (JigSawPuzzle)puzzlejig);
 				
-        		img = puzzlejig.drawPuzzle();
-        		
-        		imageView.setImageBitmap(img);
+				layout.removeAllViews();
+				//puzzlejig.generatePuzzle();				
+				LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.FILL_PARENT);
+				layout.addView(puzzle,lp);
+				
+        		//imageView.setImageBitmap(puzzlejig.drawPuzzle());
             }
         });
 		
@@ -99,17 +102,5 @@ public class PuzzleGeneratorUI extends Activity {
 
 	public void setImageGeneratePuzle(){		
 		image = new RetrieveImage(imageObj.getPath()).getImage();
-	}
-		
-	private void displayImage(){
-		setImageGeneratePuzle();
-		
-		imageView.getLayoutParams().height = mDisplay.getHeight() - 40;
-		imageView.getLayoutParams().width  = mDisplay.getWidth() - 40;
-		
-		if(image != null){
-			imageView.setImageBitmap(image);
-		}else
-			Log.d(TAG,"Error image");
 	}
 }

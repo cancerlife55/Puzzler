@@ -14,5 +14,4 @@ interface  Puzzle {
 	
 	public abstract Bitmap getOriginalImage();
 	
-	public abstract Bitmap drawPuzzle();
 }

@@ -36,10 +36,10 @@ public final class R {
         public static final int capture=0x7f080001;
         public static final int gallery=0x7f080000;
         public static final int imageViewEdit=0x7f080005;
-        public static final int imageViewGeneratePuzzle=0x7f08000c;
         public static final int imageviewPreview=0x7f080007;
         public static final int jigSawPuzzle=0x7f08000a;
         public static final int layoutBottomButtons=0x7f080008;
+        public static final int picholder=0x7f08000c;
         public static final int puzzleType=0x7f080003;
         public static final int rubikCubePuzzle=0x7f08000b;
     }

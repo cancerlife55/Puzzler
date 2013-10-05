@@ -34,10 +34,4 @@ public class RubikCubePuzzle implements Puzzle {
 		return null;
 	}
 
-	@Override
-	public Bitmap drawPuzzle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
