@@ -24,7 +24,7 @@ public class EditImageUI extends Activity{
 	
 	private Bundle extras;	
 	
-	private ImageEditor imageEditor;
+	private ImageEditorHelpers imageEditor;
 	
 	private Bitmap image;
 		
@@ -66,7 +66,6 @@ public class EditImageUI extends Activity{
 			displayImage();
 		}
 		
-		imageEditor = new ImageEditor(imageView);
 	}
 	
 	public void setImage(){		

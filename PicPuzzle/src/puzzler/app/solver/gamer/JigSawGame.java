@@ -1,4 +1,4 @@
-package puzzler.app.solver;
+package puzzler.app.solver.gamer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,14 +6,18 @@ import java.util.Comparator;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import puzzler.app.puzzleGenerator.PuzzleSetting;
 import puzzler.app.puzzleGenerator.PuzzleSlice;
 
-public class Game  extends SurfaceView implements  SurfaceHolder.Callback  {
+public class JigSawGame  extends SurfaceView implements   SurfaceHolder.Callback  {
 	private List<PuzzleSlice> puzzleSlices;
 	
 	private PuzzleSetting settings;
@@ -32,9 +36,8 @@ public class Game  extends SurfaceView implements  SurfaceHolder.Callback  {
 	
 	private boolean allowed_jump;
 	
-	public Game(Context context) {
+	public JigSawGame(Context context) {
 		super(context);
-
 	}
 	
 	/*public Game(ArrayList<PuzzleSlice> slices, PuzzleSetting settings){
@@ -47,8 +50,8 @@ public class Game  extends SurfaceView implements  SurfaceHolder.Callback  {
 	public void initSettings(){
 		slice_width  = settings.getSliceWidth();
 		slice_height = settings.getSliceHeight();
-		panel_height = settings.getImage_panel_height();
-		panel_width  = settings.getImage_panel_width();
+		panel_height = settings.getImageHeight();
+		panel_width  = settings.getImageWidth();
 		allowed_jump = settings.isAllowJump();
 		
 	}
@@ -167,19 +170,25 @@ public class Game  extends SurfaceView implements  SurfaceHolder.Callback  {
 
 	@Override
 	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void surfaceCreated(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
+
+		
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		canvas.drawColor(Color.BLACK);
+		
 		
 	}
 }

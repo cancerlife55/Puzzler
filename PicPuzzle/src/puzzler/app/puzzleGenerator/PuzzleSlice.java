@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
 
 public class PuzzleSlice {
@@ -86,5 +87,9 @@ public class PuzzleSlice {
 
 	public int getSlice_num() {
 		return slice_num;
+	}
+	
+	private void draw(Canvas canvas){
+		canvas.drawBitmap(slice_image, x_loc, y_loc, null);
 	}
 }

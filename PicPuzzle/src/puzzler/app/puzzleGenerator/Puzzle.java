@@ -2,9 +2,10 @@ package puzzler.app.puzzleGenerator;
 
 import java.util.ArrayList;
 
+
 import android.graphics.Bitmap;
 
-interface  Puzzle {
+public interface  Puzzle {
 	
 	public abstract void generatePuzzle();
 	

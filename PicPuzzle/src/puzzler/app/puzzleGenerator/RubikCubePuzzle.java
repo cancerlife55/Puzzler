@@ -2,6 +2,7 @@ package puzzler.app.puzzleGenerator;
 
 import java.util.ArrayList;
 
+
 import android.graphics.Bitmap;
 
 public class RubikCubePuzzle implements Puzzle {
